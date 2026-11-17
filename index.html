@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8e8ef">
+<title>A Secret Birthday Surprise for Mumma 💗</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎂%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--pink:#f7c8d8;--rose:#c65c82;--deep:#a74470;--gold:#d8b56d;--ink:#563849;--cream:#fff9f5;
+--serif:'Playfair Display',Georgia,'Times New Roman',serif;--script:'Dancing Script','Brush Script MT','Segoe Script',cursive}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:#fbe9f0}
+body{margin:0;font-family:var(--serif);color:var(--ink);overflow-x:hidden;min-height:100vh;
+background:radial-gradient(circle at 50% 0,#fff 0,#fff2f7 40%,#f8e1ea 100%) fixed}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+img{max-width:100%;display:block}
+.hidden{display:none!important}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.content{position:relative;z-index:1}
+
+/* layout */
+.screen{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.panel{width:min(940px,100%);background:#ffffffe0;border:1px solid #fff;box-shadow:0 22px 70px #9d587526;border-radius:32px;padding:clamp(24px,5vw,54px);text-align:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font:600 12px Arial,Helvetica,sans-serif;color:#b66a88}
+.title{font-family:var(--script);font-weight:700;font-size:clamp(3rem,10vw,6.4rem);line-height:1;margin:14px 0;color:var(--deep);text-shadow:2px 3px #f8dce7}
+.title.sm{font-size:clamp(2.4rem,7vw,4.2rem)}
+.subtitle{font-size:clamp(1rem,2.5vw,1.28rem);line-height:1.75;margin:10px auto;max-width:640px}
+.decor{font-size:clamp(1.8rem,5vw,3rem);margin:10px;letter-spacing:.2em}
+.btn{background:linear-gradient(135deg,#c65c82,#e9a6bb);color:#fff;padding:14px 28px;border-radius:999px;box-shadow:0 8px 22px #c65c8250;margin:8px;font-size:1.05rem;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px #c65c8266}.btn:active{transform:scale(.97)}
+.btn.alt{background:linear-gradient(135deg,#b89a60,#e3cc91)}
+input{padding:14px;border:1px solid #e8b8ca;border-radius:14px;font:inherit;font-size:20px;letter-spacing:.3em;width:min(260px,100%);text-align:center;color:var(--ink);background:#fff;outline:none}
+input:focus{border-color:var(--rose);box-shadow:0 0 0 4px #c65c8228}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease;transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* gate */
+.envelope{font-size:96px;animation:bob 2.2s infinite ease-in-out;filter:drop-shadow(0 10px 14px #c65c8240)}
+@keyframes bob{50%{transform:translateY(-12px) rotate(3deg)}}
+.hint{font-size:.9rem;font-style:italic;color:#9a6b7e;margin:6px 0}
+#error{color:#b74465;min-height:1.4em;margin:8px 0 0}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+
+/* hero */
+.portrait{position:relative;width:min(270px,64vw);aspect-ratio:1;margin:6px auto 18px;border-radius:50%;cursor:pointer}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;border-radius:50%;border:7px solid #fff;box-shadow:0 0 0 4px var(--gold),0 20px 50px #a7447055}
+.portrait:before{content:"";position:absolute;inset:-18px;border-radius:50%;border:2px dashed #d8b56d99;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.portrait .sp{position:absolute;font-size:28px;animation:twinkle 2.4s ease-in-out infinite}
+.portrait .s1{top:-8px;right:6px}.portrait .s2{bottom:10px;left:-14px;animation-delay:.8s}.portrait .s3{top:30%;right:-22px;animation-delay:1.5s}
+@keyframes twinkle{50%{transform:scale(1.35) rotate(18deg);opacity:.6}}
+.cue{display:inline-block;margin-top:14px;animation:bob 1.8s infinite}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:30px}
+.photo{grid-column:span 3;background:#fff;padding:10px 10px 6px;box-shadow:0 10px 28px #75465b26;border-radius:12px;transform:rotate(var(--r));transition:transform .3s,box-shadow .3s;cursor:zoom-in;text-align:center}
+.photo.wide{grid-column:span 6}
+.photo:hover,.photo:focus-visible{transform:rotate(0) scale(1.04);box-shadow:0 16px 38px #75465b3a;outline:none;z-index:2}
+.photo .frame{aspect-ratio:3/4;overflow:hidden;border-radius:8px;background:#f9e4ed}
+.photo.wide .frame{aspect-ratio:16/10}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 20%)}
+.photo .cap{display:block;font-style:italic;padding:12px 4px 8px;font-size:1rem}
+.tapnote{font-size:.85rem;color:#9a6b7e;margin-top:18px}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:50;background:#2a1520ee;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+#lb.open{opacity:1;pointer-events:auto}
+#lb img{max-width:min(94vw,1100px);max-height:78vh;border-radius:10px;box-shadow:0 20px 60px #000a;object-fit:contain}
+#lbCap{color:#fff;font-style:italic;font-size:1.2rem;margin-top:14px;text-align:center}
+.lbb{position:absolute;background:#ffffff26;color:#fff;width:48px;height:48px;border-radius:50%;font-size:26px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.lbb:hover{background:#ffffff48}
+#lbX{top:max(14px,env(safe-area-inset-top));right:14px}#lbP{left:12px;top:50%}#lbN{right:12px;top:50%}
+
+/* letter */
+.letter{max-width:700px;margin:24px auto 0;font-size:clamp(1.1rem,2.6vw,1.4rem);line-height:1.9;text-align:left}
+.letter p{margin:0 0 1.1em}
+.sign{font-family:var(--script);font-size:2rem;color:var(--deep);text-align:right;margin:0}
+
+/* cake */
+.cake{position:relative;width:230px;height:230px;margin:26px auto 8px}
+.plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:230px;height:16px;border-radius:50%;background:linear-gradient(#f3e4ea,#d9bfca);box-shadow:0 8px 16px #75465b30}
+.tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:14px 14px 10px 10px}
+.t1{bottom:8px;width:210px;height:84px;background:linear-gradient(#f4a6bf,#e07c9f)}
+.t1:before,.t2:before{content:"";position:absolute;left:0;right:0;top:0;height:26px;border-radius:14px 14px 50% 50%/14px 14px 100% 100%;background:#fff7fa}
+.t2{bottom:88px;width:150px;height:66px;background:linear-gradient(#fbd9a4,#e8b866)}
+.t2:before{height:22px;background:#fff7fa}
+.t1:after{content:"";position:absolute;left:14px;right:14px;bottom:14px;height:8px;border-radius:6px;background:repeating-linear-gradient(90deg,#fff 0 10px,transparent 10px 20px);opacity:.8}
+.candles{position:absolute;left:50%;bottom:152px;transform:translateX(-50%);display:flex;gap:18px;z-index:3}
+.candle{position:relative;width:9px;height:42px;border-radius:3px;background:repeating-linear-gradient(135deg,#fff 0 6px,#e9789c 6px 12px);display:block}
+.flame{position:absolute;left:50%;top:-24px;width:14px;height:22px;margin-left:-7px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(circle at 50% 75%,#fff6b0 0,#ffc94d 45%,#ff8a3d 100%);box-shadow:0 0 18px 6px #ffc94d88;animation:flick .35s ease-in-out infinite alternate;transform-origin:50% 100%;transition:opacity .4s,transform .4s}
+.candle:nth-child(2n) .flame{animation-delay:.12s}.candle:nth-child(3n) .flame{animation-delay:.2s}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.88,1.1) rotate(3deg)}}
+.out .flame{opacity:0;transform:scale(.2) translateY(-14px);animation:none;box-shadow:none}
+.wish{min-height:3.4em;font-size:1.2rem;line-height:1.7;font-style:italic;color:var(--deep)}
+
+/* balloons */
+.balloon-area{display:grid;grid-template-columns:repeat(4,minmax(60px,1fr));gap:22px 16px;max-width:620px;margin:30px auto 34px}
+.balloon{height:130px;border-radius:50% 50% 45% 45%;color:#fff;font-size:25px;position:relative;box-shadow:inset -10px -10px 0 #00000012,inset 8px 8px 0 #ffffff26,0 8px 18px #9b587528;animation:sway 2.6s ease-in-out infinite;transition:transform .25s}
+.balloon:nth-child(2n){animation-delay:.5s}.balloon:nth-child(3n){animation-delay:1s}
+.balloon:hover{transform:scale(1.07)}
+.balloon:after{content:"";position:absolute;bottom:-18px;left:50%;width:2px;height:22px;background:#c9a7b5}
+.balloon:nth-child(4n+1){background:#d9789b}.balloon:nth-child(4n+2){background:#9b8acb}.balloon:nth-child(4n+3){background:#d5b56d}.balloon:nth-child(4n){background:#79b7ae}
+@keyframes sway{50%{transform:translateY(-9px) rotate(4deg)}}
+.balloon.popped{visibility:hidden}
+#reveal{min-height:110px;margin:15px auto;padding:20px;background:#fff2f7;border-radius:20px;max-width:650px;font-size:1.2rem;line-height:1.7;display:flex;align-items:center;justify-content:center}
+
+.quote{font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.7;font-style:italic;color:var(--deep);max-width:680px;margin:18px auto}
+.family{width:min(560px,100%);margin:22px auto 6px;border-radius:18px;border:8px solid #fff;box-shadow:0 14px 40px #75465b33;transform:rotate(-1.2deg)}
+footer{padding:30px 16px 90px;text-align:center;color:#9a6b7e;position:relative;z-index:1}
+
+/* music */
+.music{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:20;background:#fff;border:1px solid #f0cada;padding:10px 16px 10px 14px;border-radius:999px;box-shadow:0 6px 22px #9d587530;display:flex;align-items:center;gap:10px;font:600 14px Arial,Helvetica,sans-serif;color:var(--deep)}
+.eq{display:flex;align-items:flex-end;gap:2px;height:16px}
+.eq i{width:3px;height:30%;background:var(--rose);border-radius:2px}
+.music.on .eq i{animation:eq .9s ease-in-out infinite}.music.on .eq i:nth-child(2){animation-delay:.2s}.music.on .eq i:nth-child(3){animation-delay:.4s}.music.on .eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{50%{height:100%}}
+.fall{position:fixed;top:-40px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg);opacity:.2}}
+.burst{position:fixed;z-index:60;pointer-events:none;font-size:20px;animation:burst .8s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--x),var(--y)) scale(.4);opacity:0}}
+
+@media(max-width:760px){.photo{grid-column:span 6}.photo.wide{grid-column:span 12}.gallery{gap:14px}}
+@media(max-width:520px){.balloon-area{gap:20px 10px}.balloon{height:96px;font-size:20px}.panel{border-radius:24px}.envelope{font-size:78px}.lbb{width:42px;height:42px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="petals" aria-hidden="true"></canvas>
+<audio id="song" src="assets/mumma-song.mp3" preload="auto" loop></audio>
+<button class="music hidden" id="musicBtn" aria-label="Play or pause the song" aria-pressed="false">
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="musicLbl">Play song</span>
+</button>
+
+<!-- GATE -->
+<section class="screen content" id="gate"><div class="panel">
+  <div class="eyebrow">A little secret, made with love</div>
+  <div class="envelope">💌</div>
+  <h1 class="title">For someone<br>extraordinary</h1>
+  <p class="subtitle">A tiny world of surprises is waiting for you, Mumma.</p>
+  <button class="btn" id="openBtn">Open your letter</button>
+  <div id="passArea" class="hidden">
+    <p>Enter your secret birthday code</p>
+    <input id="pass" type="password" inputmode="numeric" autocomplete="off" placeholder="••••" maxlength="8" aria-label="Secret birthday code"><br>
+    <p class="hint">Hint: your birthday — day, then month 🎂</p>
+    <button class="btn alt" id="unlockBtn">Unlock my surprise</button>
+    <p id="error" role="alert"></p>
+  </div>
+</div></section>
+
+<!-- MAIN -->
+<main id="main" class="hidden content">
+
+<section class="screen"><div class="panel">
+  <div class="decor rv">🧸 💗 🧸</div>
+  <div class="eyebrow rv">18 November · A daughter’s love</div>
+  <div class="portrait rv" id="portrait" style="--d:.15s" title="Tap me!">
+    <img src="assets/photo2.jpg" alt="Mumma smiling">
+    <span class="sp s1">✨</span><span class="sp s2">💖</span><span class="sp s3">🌸</span>
+  </div>
+  <h1 class="title rv" style="--d:.25s">Happy Birthday,<br>Mumma!</h1>
+  <p class="subtitle rv" style="--d:.35s">Today the whole little universe celebrates you.</p>
+  <p class="rv" style="font-size:2rem;margin:6px;--d:.4s">🌸 ✨ 🎂 ✨ 🌸</p>
+  <p class="subtitle rv">The song playing is chosen especially for you — turn it up. 🎶</p>
+  <button class="btn rv" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">Let’s begin <span class="cue">↓</span></button>
+</div></section>
+
+<section class="screen" id="memories"><div class="panel">
+  <div class="eyebrow rv">Our little scrapbook</div>
+  <h2 class="title sm rv">My favourite memories</h2>
+  <p class="subtitle rv">Six little windows into a lifetime of love.</p>
+  <div class="gallery">
+    <button class="photo rv" style="--r:-2deg;--pos:50% 12%" data-cap="My forever favourite"><span class="frame"><img src="assets/photo1.jpg" alt="Mumma in her pink saree" loading="lazy"></span><span class="cap">My forever favourite</span></button>
+    <button class="photo rv" style="--r:2deg;--d:.1s;--pos:50% 14%" data-cap="Every smile, a memory"><span class="frame"><img src="assets/photo2.jpg" alt="Mumma’s beautiful smile" loading="lazy"></span><span class="cap">Every smile, a memory</span></button>
+    <button class="photo rv" style="--r:-1deg;--d:.2s;--pos:50% 22%" data-cap="My safe place"><span class="frame"><img src="assets/photo3.jpg" alt="Mumma smiling, lost in thought" loading="lazy"></span><span class="cap">My safe place</span></button>
+    <button class="photo rv" style="--r:2deg;--d:.3s;--pos:50% 14%" data-cap="Timeless, like your love"><span class="frame"><img src="assets/photo4.jpg" alt="Mumma in a black and white portrait" loading="lazy"></span><span class="cap">Timeless, like your love</span></button>
+    <button class="photo wide rv" style="--r:-1deg;--pos:50% 40%" data-cap="Always by my side"><span class="frame"><img src="assets/photo5.jpg" alt="Our family selfie" loading="lazy"></span><span class="cap">Always by my side</span></button>
+    <button class="photo wide rv" style="--r:1deg;--d:.1s;--pos:50% 40%" data-cap="My home, my family"><span class="frame"><img src="assets/photo6.jpg" alt="Our family together" loading="lazy"></span><span class="cap">My home, my family</span></button>
+  </div>
+  <p class="tapnote">Tap any photo to see it bigger 💗</p>
+</div></section>
+
+<section class="screen"><div class="panel">
+  <div class="decor rv">🌷 🧸 🌷</div>
+  <div class="eyebrow rv">A letter from your daughter</div>
+  <h2 class="title sm rv">Dear Mumma</h2>
+  <div class="letter">
+    <p class="rv">Thank you for everything, Mumma.</p>
+    <p class="rv" style="--d:.15s">Thank you for every hug, every sacrifice, every little thing you do that makes my world feel safe and beautiful. You are my comfort, my strength, and one of the greatest blessings of my life.</p>
+    <p class="rv" style="--d:.3s">I may not say it every day, but I carry your love with me in everything I do.</p>
+    <p class="rv" style="--d:.45s">I love you more than words can ever explain. ❤️</p>
+    <p class="sign rv" style="--d:.6s">— Your daughter 💗</p>
+  </div>
+</div></section>
+
+<section class="screen"><div class="panel">
+  <div class="eyebrow rv">Time to make a wish</div>
+  <h2 class="title sm rv">Your birthday cake</h2>
+  <div class="cake rv" id="cake" aria-hidden="true">
+    <div class="candles"><i class="candle"><b class="flame"></b></i><i class="candle"><b class="flame"></b></i><i class="candle"><b class="flame"></b></i><i class="candle"><b class="flame"></b></i><i class="candle"><b class="flame"></b></i></div>
+    <div class="tier t2"></div><div class="tier t1"></div><div class="plate"></div>
+  </div>
+  <p class="wish" id="wish">Close your eyes, Mumma, and make a wish… 🌟</p>
+  <button class="btn" id="blowBtn">Blow out the candles 🕯️</button>
+</div></section>
+
+<section class="screen"><div class="panel">
+  <div class="eyebrow rv">A tiny game, just for you</div>
+  <h2 class="title sm rv">Pop the surprises!</h2>
+  <p class="subtitle rv">Tap each balloon to discover a little surprise from me.</p>
+  <div class="balloon-area" id="balloons"></div>
+  <div id="reveal" aria-live="polite">Choose any balloon to begin! 🎈</div>
+  <p id="count" class="eyebrow">8 surprises waiting</p>
+</div></section>
+
+<section class="screen"><div class="panel">
+  <div class="decor rv">🎉 💖 🎉</div>
+  <div class="eyebrow rv">The biggest truth of all</div>
+  <h1 class="title rv">I love you,<br>Mumma.</h1>
+  <p class="subtitle rv">Thank you for being my mother, my home, and my forever blessing.</p>
+  <img class="family rv" src="assets/photo5.jpg" alt="Our family selfie" loading="lazy">
+  <p class="quote rv">“If I am ever reborn in another world, I pray I can be your child once more.”</p>
+  <div class="decor rv">🌸 ✨ 🧸 ✨ 🌸</div>
+  <p class="subtitle rv">Happy Birthday, my dearest Mumma. ❤️</p>
+  <button class="btn rv" id="againBtn">Celebrate again 🎊</button>
+</div></section>
+
+<footer>Made with endless love, by your daughter 💗</footer>
+</main>
+
+<!-- LIGHTBOX -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lbb" id="lbX" aria-label="Close">✕</button>
+  <button class="lbb" id="lbP" aria-label="Previous photo">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lbb" id="lbN" aria-label="Next photo">›</button>
+  <div id="lbCap"></div>
+</div>
+
+<script>
+"use strict";
+const PASSCODE="1811";
+const $=s=>document.querySelector(s);
+const surprises=[
+"🎀 Surprise! You are officially the cutest Mumma in the whole universe!",
+"😂 Mumma, your hugs should be available on prescription. Instant happiness!",
+"🧸 Teddy says: Thank you for loving me even on my most dramatic days!",
+"🌷 You deserve flowers, chocolates, naps and absolutely no stress today!",
+"💃 Birthday rule: today you are allowed to dance like nobody is watching!",
+"🍰 One extra slice of cake is compulsory. I don’t make the rules!",
+"💖 If hugs could become stars, your sky would never be dark.",
+"🥹 My biggest jackpot in life is getting to be your daughter."
+];
+
+/* ---------- music ---------- */
+const song=$("#song"),mbtn=$("#musicBtn"),mlbl=$("#musicLbl");
+let fadeT=null;
+function setPlaying(p){mbtn.classList.toggle("on",p);mbtn.setAttribute("aria-pressed",p);mlbl.textContent=p?"Pause song":"Play song"}
+song.addEventListener("play",()=>setPlaying(true));
+song.addEventListener("pause",()=>setPlaying(false));
+song.addEventListener("error",()=>{mlbl.textContent="Song not found"});
+function startMusic(){
+  clearInterval(fadeT);song.volume=0;
+  const p=song.play();
+  if(p&&p.catch)p.catch(()=>setPlaying(false));
+  let v=0;fadeT=setInterval(()=>{v=Math.min(.85,v+.05);song.volume=v;if(v>=.85)clearInterval(fadeT)},180);
+}
+mbtn.addEventListener("click",()=>{
+  if(song.paused){clearInterval(fadeT);song.volume=.85;const p=song.play();if(p&&p.catch)p.catch(()=>{})}else song.pause();
+});
+document.addEventListener("visibilitychange",()=>{/* music keeps playing in background by design */});
+
+/* ---------- gate ---------- */
+$("#openBtn").addEventListener("click",()=>{$("#passArea").classList.remove("hidden");$("#openBtn").classList.add("hidden");$("#pass").focus()});
+$("#unlockBtn").addEventListener("click",unlock);
+$("#pass").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+function unlock(){
+  const inp=$("#pass");
+  if(inp.value.trim()===PASSCODE){
+    $("#gate").classList.add("hidden");$("#main").classList.remove("hidden");
+    mbtn.classList.remove("hidden");window.scrollTo(0,0);
+    makeBalloons();initReveal();startMusic();setTimeout(()=>confetti(40),400);
+  }else{
+    $("#error").textContent="Oops! That’s not the right code. Try again, Mumma 💗";
+    inp.classList.remove("shake");void inp.offsetWidth;inp.classList.add("shake");inp.select();
+  }
+}
+
+/* ---------- reveal on scroll ---------- */
+function initReveal(){
+  const els=document.querySelectorAll(".rv");
+  if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("in"));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+  els.forEach(e=>io.observe(e));
+}
+
+/* ---------- confetti & hearts ---------- */
+function confetti(n=45){
+  const set=["💗","✨","🌸","🎉","💖","🎊","🌷"];
+  for(let i=0;i<n;i++){
+    const e=document.createElement("span");e.className="fall";e.textContent=set[i%set.length];
+    e.style.cssText=`left:${Math.random()*100}vw;font-size:${18+Math.random()*16}px;animation-duration:${2.4+Math.random()*2.4}s;animation-delay:${Math.random()*.6}s`;
+    document.body.appendChild(e);setTimeout(()=>e.remove(),6000);
+  }
+}
+function burst(x,y,set=["💗","✨","💖"]){
+  for(let i=0;i<9;i++){
+    const e=document.createElement("span");e.className="burst";e.textContent=set[i%set.length];
+    const a=Math.PI*2*i/9,d=50+Math.random()*50;
+    e.style.cssText=`left:${x}px;top:${y}px;--x:${Math.cos(a)*d}px;--y:${Math.sin(a)*d}px`;
+    document.body.appendChild(e);setTimeout(()=>e.remove(),900);
+  }
+}
+$("#portrait").addEventListener("click",e=>burst(e.clientX,e.clientY));
+$("#againBtn").addEventListener("click",()=>confetti(70));
+
+/* ---------- lightbox ---------- */
+const photos=[...document.querySelectorAll(".photo")];
+const lb=$("#lb"),lbImg=$("#lbImg"),lbCap=$("#lbCap");let cur=0,lastFocus=null;
+function showPhoto(i){cur=(i+photos.length)%photos.length;const p=photos[cur];const im=p.querySelector("img");lbImg.src=im.src;lbImg.alt=im.alt;lbCap.textContent=p.dataset.cap}
+function openLb(i){lastFocus=document.activeElement;showPhoto(i);lb.classList.add("open");document.body.style.overflow="hidden";$("#lbX").focus()}
+function closeLb(){lb.classList.remove("open");document.body.style.overflow="";if(lastFocus)lastFocus.focus()}
+photos.forEach((p,i)=>p.addEventListener("click",()=>openLb(i)));
+$("#lbX").addEventListener("click",closeLb);
+$("#lbP").addEventListener("click",()=>showPhoto(cur-1));
+$("#lbN").addEventListener("click",()=>showPhoto(cur+1));
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+document.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")showPhoto(cur-1);if(e.key==="ArrowRight")showPhoto(cur+1)});
+let tx=0;
+lb.addEventListener("touchstart",e=>{tx=e.changedTouches[0].clientX},{passive:true});
+lb.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)showPhoto(cur+(dx<0?1:-1))},{passive:true});
+
+/* ---------- cake ---------- */
+const cake=$("#cake"),wish=$("#wish"),blow=$("#blowBtn");let out=false;
+blow.addEventListener("click",()=>{
+  if(!out){
+    cake.classList.add("out");out=true;
+    wish.textContent="Your wish is on its way to the stars, Mumma… may every single one come true. ✨";
+    blow.textContent="Light them again 🕯️";confetti(60);
+  }else{
+    cake.classList.remove("out");out=false;
+    wish.textContent="Close your eyes, Mumma, and make a wish… 🌟";blow.textContent="Blow out the candles 🕯️";
+  }
+});
+document.querySelector(".candles").addEventListener("click",()=>{if(!out)blow.click()});
+
+/* ---------- balloons ---------- */
+function makeBalloons(){
+  const area=$("#balloons");if(area.children.length)return;
+  surprises.forEach((s,i)=>{
+    const b=document.createElement("button");b.className="balloon";b.textContent=["♥","✦","♡","★"][i%4];
+    b.setAttribute("aria-label","Pop surprise "+(i+1));
+    b.addEventListener("click",()=>{
+      if(b.classList.contains("popped"))return;
+      const r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,["🎈","✨","💗"]);
+      b.classList.add("popped");$("#reveal").textContent=s;
+      const left=area.querySelectorAll(".balloon:not(.popped)").length;
+      $("#count").textContent=left?left+(left===1?" surprise waiting":" surprises waiting"):"All surprises opened! Sending you a million hugs! 🎉";
+      if(!left)confetti(70);
+    });
+    area.appendChild(b);
+  });
+}
+
+/* ---------- falling petals background ---------- */
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const c=$("#petals"),x=c.getContext("2d");let W,H,P=[];
+  const cols=["#f7a8c4","#f2c0d2","#e98aa9","#f6d8a2","#ffffff"];
+  function size(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}
+  function mk(init){return{x:Math.random()*W,y:init?Math.random()*H:-20,r:5+Math.random()*7,s:.35+Math.random()*.8,w:Math.random()*Math.PI*2,ws:.01+Math.random()*.02,rot:Math.random()*6.28,rs:(Math.random()-.5)*.03,col:cols[Math.floor(Math.random()*cols.length)],a:.35+Math.random()*.4}}
+  function init(){size();P=Array.from({length:innerWidth<600?16:30},()=>mk(true))}
+  addEventListener("resize",size);init();
+  function tick(){
+    x.clearRect(0,0,W,H);
+    if(!document.hidden)for(const p of P){
+      p.y+=p.s;p.w+=p.ws;p.x+=Math.sin(p.w)*.6;p.rot+=p.rs;
+      if(p.y>H+20)Object.assign(p,mk(false));
+      x.save();x.translate(p.x,p.y);x.rotate(p.rot);x.globalAlpha=p.a;x.fillStyle=p.col;
+      x.beginPath();x.ellipse(0,0,p.r,p.r*.55,0,0,6.283);x.fill();x.restore();
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
